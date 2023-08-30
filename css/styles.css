@@ -4,6 +4,8 @@
     --accent-color: #404bbf;
     --primary-gap: 24px;
     --container-margin: 141px;
+    --transition-time: 250ms;
+    --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -126,12 +128,35 @@ button {
     letter-spacing: 0.32px;
     line-height: 1.5;
 
+    transition: color var(--transition-time) var(--cubic-bezier);
+
     color: var(--navy-blue-color);
 }
 
 .nav-link:hover,
 .nav-link:focus {
     color: var(--accent-color);
+}
+
+.nav-link-active {
+    position: relative;
+
+    color: var(--accent-color);
+}
+
+.nav-link-active::after {
+    content: "";
+
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 4px;
+
+    border-radius: 4px;
+    background-color: var(--accent-color);
 }
 
 /* address */
@@ -154,6 +179,8 @@ button {
     letter-spacing: 0.32px;
     line-height: 1.5;
 
+    transition: color var(--transition-time) var(--cubic-bezier);
+
     color: #434455;
 }
 
@@ -165,9 +192,14 @@ button {
 /* hero */
 
 .hero {
-    background-color: var(--navy-blue-color);
     padding-top: 188px;
     padding-bottom: 188px;
+
+    background-color: var(--navy-blue-color);
+    background-image: linear-gradient(rgba(46, 47, 66, 0.70), rgba(46, 47, 66, 0.70)), url(../images/hero/hero-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .hero-title {
@@ -201,8 +233,11 @@ button {
     line-height: 1.5;
     letter-spacing: 0.64px;
 
+    transition: background-color var(--transition-time) var(--cubic-bezier);
+
     border: 0;
     border-radius: 4px;
+
 
     background-color: #4D5AE5;
     color: var(--primary-color);
@@ -258,6 +293,25 @@ button {
     line-height: 1.5;
 }
 
+.benefits-box {
+    width: 100%;
+
+    margin-bottom: 8px;
+    padding-top: var(--primary-gap);
+    padding-bottom: var(--primary-gap);
+
+    border-radius: 4px;
+    border: 1px solid #8E8F99;
+    background-color: #F4F4FD;
+}
+
+.benefits-icon {
+    display: block;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
 /* team */
 
 .team {
@@ -275,6 +329,7 @@ button {
     flex-basis: calc((100% - 24px * 3) / 4);
 
     border-radius: 0px 0px 4px 4px;
+    box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 
     background-color: var(--primary-color);
 }
@@ -316,10 +371,38 @@ button {
 .team-text {
     text-align: center;
 
+    margin-bottom: 8px;
+
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.32px;
     line-height: 1.5;
+}
+
+.team-social-list {
+    display: flex;
+    justify-content: center;
+    gap: var(--primary-gap);
+}
+
+
+
+.team-social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    transition: background-color var(--transition-time) var(--cubic-bezier);
+    background-color: #4D5AE5;
+}
+
+.team-social-link:hover,
+.team-social-link:focus {
+    background-color: var(--accent-color);
 }
 
 /* portfolio */
@@ -352,6 +435,47 @@ button {
 
 .portfolio-item {
     flex-basis: calc((100% - 24px * 2) / 3);
+}
+
+.portfolio-item:hover {
+    box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.portfolio-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-overlay-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding-top: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+
+    transform: translateY(100%);
+
+    transition: transform var(--transition-time) var(--cubic-bezier);
+
+    background-color: #4D5AE5;
+}
+
+.portfolio-item:hover .portfolio-overlay-box {
+    transform: translateY(0);
+}
+
+.portfolio-overlay-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.32px;
+
+    color: #F4F4FD;
 }
 
 .portfolio-item-container {
@@ -388,6 +512,14 @@ button {
     padding-bottom: 100px;
 }
 
+.footer-container {
+    display: flex;
+}
+
+.footer-copirate {
+    margin-right: 120px;
+}
+
 .footer-logo {
     margin-bottom: 16px;
 
@@ -406,4 +538,37 @@ button {
     line-height: 1.5;
 
     color: #F4F4FD;
+}
+
+.footer-social-title {
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.32px;
+
+    color: var(--primary-color);
+}
+
+.footer-social-list {
+    display: flex;
+    gap: var(--primary-gap);
+}
+
+
+.footer-social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+    background-color: #4D5AE5;
+}
+
+.footer-social-link:hover {
+    background-color: #31D0AA;
 }
