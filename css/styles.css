@@ -70,6 +70,8 @@ button {
 
 .header {
     border-bottom: 1px solid #E7E9FC;
+
+    box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 2px 1px 0px rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -155,7 +157,7 @@ button {
     width: 100%;
     height: 4px;
 
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: var(--accent-color);
 }
 
@@ -192,6 +194,11 @@ button {
 /* hero */
 
 .hero {
+    max-width: 1440px;
+
+    margin-right: auto;
+    margin-left: auto;
+
     padding-top: 188px;
     padding-bottom: 188px;
 
@@ -294,22 +301,18 @@ button {
 }
 
 .benefits-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 100%;
+    height: 112px;
 
     margin-bottom: 8px;
-    padding-top: var(--primary-gap);
-    padding-bottom: var(--primary-gap);
 
     border-radius: 4px;
     border: 1px solid #8E8F99;
     background-color: #F4F4FD;
-}
-
-.benefits-icon {
-    display: block;
-
-    margin-right: auto;
-    margin-left: auto;
 }
 
 /* team */
@@ -405,6 +408,10 @@ button {
     background-color: var(--accent-color);
 }
 
+.team-social-icon {
+    fill: #f4f4fd;
+}
+
 /* portfolio */
 
 .portfolio {
@@ -435,6 +442,8 @@ button {
 
 .portfolio-item {
     flex-basis: calc((100% - 24px * 2) / 3);
+
+    transition: box-shadow var(--transition-time) var(--cubic-bezier);
 }
 
 .portfolio-item:hover {
@@ -465,17 +474,31 @@ button {
     background-color: #4D5AE5;
 }
 
-.portfolio-item:hover .portfolio-overlay-box {
-    transform: translateY(0);
-}
-
 .portfolio-overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 40px 32px;
+
+    transform: translateY(100%);
+
+    transition: transform var(--transition-time) var(--cubic-bezier);
+
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.32px;
 
+    background-color: #4D5AE5;
     color: #F4F4FD;
+}
+
+.portfolio-item:hover .portfolio-overlay-text {
+    transform: translateY(0%);
 }
 
 .portfolio-item-container {
@@ -514,6 +537,7 @@ button {
 
 .footer-container {
     display: flex;
+    align-items: baseline;
 }
 
 .footer-copirate {
@@ -553,7 +577,7 @@ button {
 
 .footer-social-list {
     display: flex;
-    gap: var(--primary-gap);
+    gap: 16px;
 }
 
 
@@ -574,4 +598,8 @@ button {
 .footer-social-link:hover,
 .footer-social-link:focus {
     background-color: #31D0AA;
+}
+
+.footer-social-icon {
+    fill: #f4f4fd;
 }
